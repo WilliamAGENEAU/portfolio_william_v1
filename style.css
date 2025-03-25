@@ -106,7 +106,7 @@ td:first-child {
 
 th:hover,
 td:hover {
-    background-color: var(--boheme);
+    background-color: var(--green);
     color: white;
 }
 
@@ -200,17 +200,21 @@ button:hover {
 
 nav {
     position: fixed;
-    width: calc(100% - 225px);
+    width: 100%;
     z-index: 2;
-    padding: 10px 45px;
+    padding: 10px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    /* Centre les éléments horizontalement */
     align-items: center;
+    /* Centre les éléments verticalement */
     font-family: var(--font);
     backdrop-filter: blur(10px);
     top: 0;
     box-shadow: 0 10px 30px -10px var(--navy-shadow);
-    transition: box-shadow .2s, padding .2s, top .2s .1s
+    transition: box-shadow 0.2s, padding 0.2s, top 0.2s 0.1s;
+    background-color: var(--light-navy);
+    /* Optionnel : ajoute un fond */
 }
 
 nav.hide {
@@ -262,7 +266,9 @@ nav ul li:not(:last-of-type) a {
     padding: 10px;
     color: var(--lightest-slate);
     transition: color .2s;
-    white-space: nowrap
+    white-space: nowrap;
+    list-style: none;
+
 }
 
 nav li:not(:last-of-type) a:hover {
@@ -324,18 +330,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center
-}
-
-.zoom:hover {
-    -ms-transform: scale(1.5);
-    /* IE 9 */
-    -webkit-transform: scale(1.5);
-    /* Safari 3-8 */
-    transform: scale(1.5);
-}
-
-.zoom {
-    transition: transform .2s;
 }
 
 .card3 {
@@ -507,46 +501,85 @@ section:not(:last-child) h2::after {
     color: var(--light-navy)
 }
 
-#about div {
+#about {
     display: flex;
     justify-content: center;
-    gap: 60px;
-    align-self: flex-start;
-    flex-wrap: wrap
+    align-items: center;
+    padding: 50px 20px;
+    background-color: var(--light-navy);
+    position: relative;
+    overflow: hidden;
+    /* Assure que le contenu reste dans les limites */
 }
 
-#about p {
-    text-align: justify;
-    flex: 1;
-    min-width: min(400px, 100%)
-}
-
-#about .filter {
-    width: min(225px, calc(100% - 50px));
-    padding-bottom: 15px
-}
-
-#about .filter>div::before {
-    position: absolute;
+#about::before {
     content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    top: 15px;
-    left: 15px;
-    border: 2px solid var(--green);
-    border-radius: var(--border-radius)
+    background-image: radial-gradient(var(--gris) 1px, transparent 1px);
+    background-size: 20px 20px;
+    /* Taille des points */
+    opacity: 0.3;
+    /* Transparence des points */
+    z-index: 0;
 }
 
-#about .filter>div {
-    position: relative;
-    border-radius: var(--border-radius)
-}
-
-#about img {
+.about-container {
+    display: flex;
+    max-width: 1200px;
     width: 100%;
+    gap: 40px;
+    align-items: center;
+    position: relative;
     z-index: 1;
-    aspect-ratio: auto;
-    border-radius: var(--border-radius)
+    /* Assure que le contenu est au-dessus des points */
+}
+
+.about-image {
+    flex: 2;
+    /* 2/3 de l'espace */
+}
+
+.about-image img {
+    width: 85%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+}
+
+.about-image img:hover {
+    cursor: url(Images/crown.svg) 38 38, auto;
+}
+
+
+.about-text {
+    flex: 1;
+    /* 1/3 de l'espace */
+    color: var(--slate);
+}
+
+.about-text h2 {
+    color: var(--lightest-slate);
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-family: var(--font);
+}
+
+.about-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--slate);
+}
+
+.about-text a {
+    color: var(--green);
+    text-decoration: underline;
+}
+
+.about-text a:hover {
+    color: var(--boheme);
 }
 
 #background>div {
